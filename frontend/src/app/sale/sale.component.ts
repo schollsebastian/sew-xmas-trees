@@ -18,13 +18,13 @@ export class SaleComponent {
                      private readonly router: Router) {
     this.tree = dataService.tree!;
     this.formGroup = new FormGroup({
-      firstName: new FormControl('', [ Validators.required, Validators.pattern(/[a-zA-Z- ']/g) ]),
-      lastName: new FormControl('', [ Validators.required, Validators.pattern(/[a-zA-Z- ']/g) ]),
+      firstName: new FormControl('', [ Validators.required ]),
+      lastName: new FormControl('', [ Validators.required ]),
       email: new FormControl('', [ Validators.required, Validators.email ]),
-      street: new FormControl('', [ Validators.required, Validators.pattern(/[a-zA-Z- ']/g) ]),
+      street: new FormControl('', [ Validators.required ]),
       houseNumber: new FormControl('', [ Validators.required, Validators.pattern(/[\d]/g) ]),
       zip: new FormControl('', [ Validators.required, Validators.pattern(/^\d{4}$/) ]),
-      city: new FormControl('', [ Validators.required, Validators.pattern(/[a-zA-Z- ']/g) ])
+      city: new FormControl('', [ Validators.required ])
     });
   }
 
