@@ -36,6 +36,7 @@ interface SaleData {
 
   firstName: string;
   lastName: string;
+  email: string;
   address: {
     street: string;
     houseNumber: number;

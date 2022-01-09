@@ -20,6 +20,7 @@ export class SaleComponent {
     this.formGroup = new FormGroup({
       firstName: new FormControl('', [ Validators.required, Validators.pattern(/[a-zA-Z- ']/g) ]),
       lastName: new FormControl('', [ Validators.required, Validators.pattern(/[a-zA-Z- ']/g) ]),
+      email: new FormControl('', [ Validators.required, Validators.email ]),
       street: new FormControl('', [ Validators.required, Validators.pattern(/[a-zA-Z- ']/g) ]),
       houseNumber: new FormControl('', [ Validators.required, Validators.pattern(/[\d]/g) ]),
       zip: new FormControl('', [ Validators.required, Validators.pattern(/\d/),
@@ -32,6 +33,7 @@ export class SaleComponent {
     this.dataService.data = {
       firstName: this.formGroup.get('firstName')?.value,
       lastName: this.formGroup.get('lastName')?.value,
+      email: this.formGroup.get('email')?.value,
       address: {
         street: this.formGroup.get('street')?.value,
         houseNumber: this.formGroup.get('houseNumber')?.value,
