@@ -43,21 +43,28 @@ public class TreeResource {
                 : Response.ok(tree)).build();
     }
 
-    @POST
+    @PATCH
     @Path("{type}/{id}/buy")
     public Response buyTree(@PathParam("type") TreeType type, @PathParam("id") int id) {
         var tree = getTreeById(type, id);
 
         if (tree == null) {
-            return Response.status(404).build();
+            return Response
+                    .status(404)
+                    .build();
         }
 
         if (tree.isSold()) {
-            return Response.notModified().build();
+            return Response
+                    .notModified()
+                    .build();
         }
 
         tree.setSold(true);
-        return Response.ok().build();
+
+        return Response
+                .ok(tree)
+                .build();
     }
 
     private Tree getTreeById(TreeType type, int id) {
