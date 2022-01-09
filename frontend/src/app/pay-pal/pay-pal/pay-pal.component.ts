@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SaleDataService } from '../../shared/sale-data.service';
 
@@ -7,7 +7,7 @@ import { SaleDataService } from '../../shared/sale-data.service';
   templateUrl: './pay-pal.component.html',
   styleUrls: ['./pay-pal.component.scss']
 })
-export class PayPalComponent {
+export class PayPalComponent implements OnInit {
 
   public formGroup: FormGroup;
 
@@ -19,25 +19,31 @@ export class PayPalComponent {
     })
   }
 
+  public ngOnInit(): void {
+    if (!this.saleDataService.tree || !this.saleDataService.data) {
+      this.router.navigate([ '' ]);
+    }
+  }
+
   public getName(): string {
-    return `${this.saleDataService.data?.firstName} ${this.saleDataService.data?.lastName}`;
+    return `${this.saleDataService.data!.firstName} ${this.saleDataService.data!.lastName}`;
   }
 
   public getEmail(): string {
-    return this.saleDataService.data?.email ?? '';
+    return this.saleDataService.data!.email;
   }
 
   public getAddress(): string {
-    return `${this.saleDataService.data?.address.street} ${this.saleDataService.data?.address.houseNumber}, ` +
-      `${this.saleDataService.data?.address.zip} ${this.saleDataService.data?.address.city}`;
+    return `${this.saleDataService.data!.address.street} ${this.saleDataService.data!.address.houseNumber}, ` +
+      `${this.saleDataService.data!.address.zip} ${this.saleDataService.data!.address.city}`;
   }
 
   public getTree(): string {
-    return this.saleDataService.tree?.type ?? '';
+    return this.saleDataService.tree!.type;
   }
 
   public getPrice(): number {
-    return this.saleDataService.tree?.price ?? 0;
+    return this.saleDataService.tree!.price;
   }
 
 }

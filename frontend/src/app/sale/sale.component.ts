@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SaleDataService } from '../shared/sale-data.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ITree } from '../shared/backend.service';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './sale.component.html',
   styleUrls: ['./sale.component.scss']
 })
-export class SaleComponent {
+export class SaleComponent implements OnInit {
 
   public tree: ITree;
   public formGroup: FormGroup;
@@ -26,6 +26,12 @@ export class SaleComponent {
       zip: new FormControl('', [ Validators.required, Validators.pattern(/^\d{4}$/) ]),
       city: new FormControl('', [ Validators.required ])
     });
+  }
+
+  public ngOnInit(): void {
+    if (!this.dataService.tree) {
+      this.router.navigate([ '' ]);
+    }
   }
 
   public submit(): void {
