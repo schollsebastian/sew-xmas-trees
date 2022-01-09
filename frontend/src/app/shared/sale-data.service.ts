@@ -7,9 +7,11 @@ import { ITree } from './backend.service';
 export class SaleDataService {
 
   private treeToSell: ITree | null;
+  private saleData: SaleData | null;
 
   constructor() {
     this.treeToSell = null;
+    this.saleData = null;
   }
 
   public set tree(tree: ITree | null) {
@@ -18,6 +20,27 @@ export class SaleDataService {
 
   public get tree(): ITree | null {
     return this.treeToSell;
+  }
+
+  public set data(saleData: SaleData | null) {
+    this.saleData = saleData;
+  }
+
+  public get data(): SaleData | null {
+    return this.saleData;
+  }
+
+}
+
+interface SaleData {
+
+  firstName: string;
+  lastName: string;
+  address: {
+    street: string;
+    houseNumber: number;
+    zip: number;
+    city: string;
   }
 
 }
