@@ -27,6 +27,12 @@ export class BackendService {
         const resp = this.http.get<ITree>(url);
         return firstValueFrom(resp);
     }
+
+    public buyTree(type: string, id: number): Promise<ITree> {
+        const url = `${BASE_URL}/${type}/${id}/buy`;
+        const resp = this.http.patch<ITree>(url, {});
+        return firstValueFrom(resp);
+    }
 }
 
 export interface ITree {
