@@ -13,6 +13,7 @@ import { TypeSelectionComponent } from './tree/type-selection/type-selection.com
 import {MatSelectModule} from "@angular/material/select";
 import { TreeListComponent } from './tree/tree-list/tree-list.component';
 import { TreeDisplayComponent } from './tree/tree-display/tree-display.component';
+import { SaleComponent } from './sale/sale.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TreeDisplayComponent } from './tree/tree-display/tree-display.component
     TreeComponent,
     TypeSelectionComponent,
     TreeListComponent,
-    TreeDisplayComponent
+    TreeDisplayComponent,
+    SaleComponent
   ],
     imports: [
         BrowserModule,
