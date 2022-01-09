@@ -1,17 +1,38 @@
 <mat-card>
+  <mat-card-title>PayPal</mat-card-title>
+
   <mat-card-content>
-    <form [formGroup]="formGroup">
-      <mat-form-field>
-        <input matInput placeholder="Credit Card Number" formControlName="creditCardNr">
-      </mat-form-field>
+    <mat-card>
+      <p>Name: <span class="bold">{{ getName() }}</span></p>
+      <p>Email: <span class="bold">{{ getEmail() }}</span></p>
+      <p>Address: <span class="bold">{{ getAddress() }}</span></p>
+    </mat-card>
 
-      <mat-form-field>
-        <input matInput placeholder="Expiry Date" formControlName="expiryDate">
-      </mat-form-field>
+    <mat-card>
+      <form [formGroup]="formGroup">
+        <mat-form-field>
+          <input matInput placeholder="Credit Card Number" formControlName="creditCardNr">
+        </mat-form-field>
 
-      <mat-form-field>
-        <input matInput placeholder="Owner" formControlName="owner">
-      </mat-form-field>
-    </form>
+        <mat-form-field>
+          <input matInput placeholder="Expiry Date" formControlName="expiryDate">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Owner" formControlName="owner">
+        </mat-form-field>
+      </form>
+    </mat-card>
+
+    <mat-card>
+      <ul>
+        <li>{{ getTree() }}: {{ getPrice() }}€</li>
+      </ul>
+      <p class="bold">Total: {{ getPrice() }}€</p>
+    </mat-card>
   </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" [disabled]="!formGroup.valid">Pay</button>
+  </mat-card-actions>
 </mat-card>
