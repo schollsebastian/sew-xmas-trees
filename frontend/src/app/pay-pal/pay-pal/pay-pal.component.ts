@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SaleDataService } from '../../shared/sale-data.service';
 
 @Component({
   selector: 'app-pay-pal',
@@ -10,12 +11,33 @@ export class PayPalComponent {
 
   public formGroup: FormGroup;
 
-  constructor() {
+  constructor(private readonly saleDataService: SaleDataService) {
     this.formGroup = new FormGroup({
       creditCardNr: new FormControl('', [ Validators.required, Validators.pattern(/^\d{16}$/) ]),
       expiryDate: new FormControl('', [ Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/(\d{2})$/) ]),
       owner: new FormControl('', [ Validators.required ])
     })
+  }
+
+  public getName(): string {
+    return `${this.saleDataService.data?.firstName} ${this.saleDataService.data?.lastName}`;
+  }
+
+  public getEmail(): string {
+    return this.saleDataService.data?.email ?? '';
+  }
+
+  public getAddress(): string {
+    return `${this.saleDataService.data?.address.street} ${this.saleDataService.data?.address.houseNumber}, ` +
+      `${this.saleDataService.data?.address.zip} ${this.saleDataService.data?.address.city}`;
+  }
+
+  public getTree(): string {
+    return this.saleDataService.tree?.type ?? '';
+  }
+
+  public getPrice(): number {
+    return this.saleDataService.tree?.price ?? 0;
   }
 
 }
