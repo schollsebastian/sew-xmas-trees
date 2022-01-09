@@ -1,3 +1,33 @@
-<p>
-  Display data of tree #{{ tree.id }}
-</p>
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="formGroup">
+      <mat-form-field>
+        <input matInput placeholder="First Name" formControlName="firstName">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Last Name" formControlName="lastName">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Street" formControlName="street">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="House Number" formControlName="houseNumber">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="ZIP" formControlName="zip">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="City" formControlName="city">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button [disabled]="!formGroup.valid">Buy</button>
+  </mat-card-actions>
+</mat-card>
