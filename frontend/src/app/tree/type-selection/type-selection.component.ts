@@ -28,6 +28,7 @@ export class TypeSelectionComponent implements OnInit {
                     this.treeTypes = res;
                     if (res.length > 0) {
                         this.selectedType = res[0];
+                        this.typeSelected.emit(this.selectedType);
                     }
                 },
                 error: err => {
