@@ -23,8 +23,7 @@ export class SaleComponent {
       email: new FormControl('', [ Validators.required, Validators.email ]),
       street: new FormControl('', [ Validators.required, Validators.pattern(/[a-zA-Z- ']/g) ]),
       houseNumber: new FormControl('', [ Validators.required, Validators.pattern(/[\d]/g) ]),
-      zip: new FormControl('', [ Validators.required, Validators.pattern(/\d/),
-        Validators.minLength(4), Validators.maxLength(4) ]),
+      zip: new FormControl('', [ Validators.required, Validators.pattern(/^\d{4}$/) ]),
       city: new FormControl('', [ Validators.required, Validators.pattern(/[a-zA-Z- ']/g) ])
     });
   }
