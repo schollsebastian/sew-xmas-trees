@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { BackendService, ITree } from '../shared/backend.service';
 import { SaleDataService } from '../shared/sale-data.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ITree } from '../shared/backend.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sale',
@@ -14,7 +15,7 @@ export class SaleComponent {
   public formGroup: FormGroup;
 
   public constructor(private readonly dataService: SaleDataService,
-                     private readonly backendService: BackendService) {
+                     private readonly router: Router) {
     this.tree = dataService.tree!;
     this.formGroup = new FormGroup({
       firstName: new FormControl('', [ Validators.required, Validators.pattern(/[a-zA-Z- ']/g) ]),
@@ -25,6 +26,21 @@ export class SaleComponent {
         Validators.minLength(4), Validators.maxLength(4) ]),
       city: new FormControl('', [ Validators.required, Validators.pattern(/[a-zA-Z- ']/g) ])
     });
+  }
+
+  public submit(): void {
+    this.dataService.data = {
+      firstName: this.formGroup.get('firstName')?.value,
+      lastName: this.formGroup.get('lastName')?.value,
+      address: {
+        street: this.formGroup.get('street')?.value,
+        houseNumber: this.formGroup.get('houseNumber')?.value,
+        zip: this.formGroup.get('zip')?.value,
+        city: this.formGroup.get('city')?.value
+      }
+    };
+    console.log(this.dataService.data);
+    this.router.navigate([ 'pay-pal' ])
   }
 
 }
