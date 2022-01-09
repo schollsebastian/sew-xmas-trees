@@ -46,8 +46,8 @@ export class SaleComponent implements OnInit {
         city: this.formGroup.get('city')?.value
       }
     };
-    console.log(this.dataService.data);
-    this.router.navigate([ 'pay-pal' ])
+
+    this.router.navigate([ 'pay-pal' ]);
   }
 
 }
