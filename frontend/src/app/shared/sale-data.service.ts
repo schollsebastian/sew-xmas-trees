@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ITree } from './shared/backend.service';
+import { ITree } from './backend.service';
 
 @Injectable({
   providedIn: 'root'

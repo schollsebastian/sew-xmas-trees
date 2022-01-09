@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BackendService, ITree} from "../../shared/backend.service";
-import { SaleDataService } from '../../sale-data.service';
+import { SaleDataService } from '../../shared/sale-data.service';
 import { Router } from '@angular/router';
 
 @Component({
