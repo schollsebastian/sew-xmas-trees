@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {BackendService} from "../shared/backend.service";
 
 @Component({
     selector: 'app-tree',
@@ -10,7 +9,7 @@ export class TreeComponent {
 
     public selectedType: string | null;
 
-    constructor(private readonly backend: BackendService) {
+    constructor() {
         this.selectedType = null;
     }
 
