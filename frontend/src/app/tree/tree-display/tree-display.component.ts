@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BackendService, ITree} from "../../shared/backend.service";
+import { SaleDataService } from '../../sale-data.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-tree-display',
@@ -16,8 +18,15 @@ export class TreeDisplayComponent implements OnInit {
 
     public tree: ITree | null;
 
-    public constructor(private readonly backendService: BackendService) {
+    public constructor(private readonly backendService: BackendService,
+                       private readonly saleDataService: SaleDataService,
+                       private readonly router: Router) {
         this.tree = null;
+    }
+
+    public buyTree(): void {
+        this.saleDataService.tree = this.tree;
+        this.router.navigate([ 'sale' ]);
     }
 
     public async ngOnInit(): Promise<void> {
