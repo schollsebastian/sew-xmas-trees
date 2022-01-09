@@ -33,6 +33,6 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-raised-button color="primary" [disabled]="!formGroup.valid">Pay</button>
+    <button mat-raised-button color="primary" [disabled]="!formGroup.valid" (click)="pay()">Pay</button>
   </mat-card-actions>
 </mat-card>
